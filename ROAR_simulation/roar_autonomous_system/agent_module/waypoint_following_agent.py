@@ -75,4 +75,6 @@ class WaypointFollowingAgent(Agent):
             self.logger.debug("Path Following Agent is Done. Idling.")
         else:
             control = self.local_planner.run_step(vehicle=vehicle)
+            self.visualizer.visualize_waypoint(
+                waypoint_transform=self.local_planner.way_points_queue[0])
         return control

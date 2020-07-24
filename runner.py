@@ -31,16 +31,16 @@ def main():
         carla_runner = CarlaRunner(carla_settings=carla_settings,
                                    agent_settings=agent_settings)
         my_vehicle = carla_runner.set_carla_world()
-        agent = PurePursuitAgent(vehicle=my_vehicle,
-                                 agent_settings=agent_settings)
+        # agent = PurePursuitAgent(vehicle=my_vehicle,
+        #                          agent_settings=agent_settings)
 
         # agent = SemanticSegmentationAgent(
         #     vehicle=my_vehicle,
         #     agent_settings=agent_settings
         # )
-        # agent = WaypointFollowingAgent(vehicle=my_vehicle,
-        #                                agent_settings=agent_settings,
-        #                                target_speed=120)
+        agent = WaypointFollowingAgent(vehicle=my_vehicle,
+                                       agent_settings=agent_settings,
+                                       target_speed=120)
         carla_runner.start_game_loop(agent=agent, use_manual_control=False)
     except Exception as e:
         print(f"ERROR: Something bad happened. Safely exiting. Error:{e}")
